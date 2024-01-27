@@ -1,7 +1,5 @@
 package ruaffu.dk.budgetor.model;
 
-import java.time.*;
-
 import jakarta.persistence.*;
 
 import lombok.*;
@@ -11,14 +9,18 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Transaction {
+public class MonthlySummary {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Double amount;
-	private LocalDate transactionDate;
-	private String description;
-	private String category;
+	private Integer month;
+	private Integer year;
+	private Double totalIncome;
+	private Double totalExpense;
+	private Double totalSavings;
+	private Double budgetAllocated;
+	private Double budgetRemaining;
+
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
